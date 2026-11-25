@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAYAR SULA | Layanan Jarak Jauh & Terpadu Kejaksaan Negeri Kepulauan Sula</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        kejaksaan: {
+                            green: '#0B4F32',
+                            darkGreen: '#073622',
+                            lightGreen: '#E8F3EE',
+                            gold: '#D4AF37',
+                            goldHover: '#B89428',
+                            marine: '#0A3656',
+                            marineLight: '#124D78',
+                            ocean: '#F0F7FA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Hero background menggunakan foto kantor Kejari Kepulauan Sula + overlay gradasi khas Adhyaksa */
+        .hero-with-photo {
+            background-color: #073622;
+            
+            background-image: 
+                linear-gradient(125deg, rgba(7, 54, 34, 0.45) 0%, rgba(11, 79, 50, 0.35) 50%, rgba(10, 54, 86, 0.40) 100%),
+                url('WhatsApp Image 2026-10-06 at 14.07.36.jpeg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        /* Subtle watermarks & floating animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0B4F32;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0A3656;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-kejaksaan-gold selection:text-kejaksaan-darkGreen">
+
+    <!-- Top Identity Ribbon -->
+    <div class="bg-kejaksaan-marine text-white text-xs py-2 px-4 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-kejaksaan-gold animate-pulse"></span>
+                <span class="font-medium tracking-wide">KEJAKSAAN REPUBLIK INDONESIA • KEJAKSAAN TINGGI MALUKU UTARA</span>
+            </div>
+            <div class="text-slate-200 flex items-center gap-3">
+                <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline text-kejaksaan-gold mr-1"></i>Jl. Jendral Besar Soeharto, Desa Waihama, Kec. Sanana Kab. Kepulauan Sula</span>
+                <span class="hidden md:inline">|</span>
+                <span class="hidden md:inline font-semibold text-kejaksaan-gold">Zona Integritas WBK / WBBM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Brand -->
+                <a href="#beranda" class="flex items-center gap-3 group">
+                    <!-- Custom Emblem SVG combining Adhyaksa Green/Gold & Maritime Sail/Waves -->
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-kejaksaan-green to-kejaksaan-marine flex items-center justify-center shadow-md border border-kejaksaan-gold/50 group-hover:scale-105 transition-transform">
+                        <svg class="w-7 h-7 text-kejaksaan-gold" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Sail Shape -->
+                            <path d="M18 4L29 22H18V4Z" fill="currentColor" fill-opacity="0.9"/>
+                            <path d="M16 7L8 22H16V7Z" fill="#FFFFFF" fill-opacity="0.85"/>
+                            <!-- Boat Hull -->
+                            <path d="M5 24H31L27 28H9L5 24Z" fill="currentColor"/>
+                            <!-- Ocean Waves -->
+                            <path d="M4 31C8 29.5 11 32.5 15 31C19 29.5 22 32.5 26 31C29 30 31 31 32 31.5" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-display font-extrabold text-xl tracking-tight text-kejaksaan-green">LAYAR <span class="text-kejaksaan-marine">SULA</span></span>
+                            <span class="px-1.5 py-0.5 text-[10px] font-bold uppercase bg-kejaksaan-gold/20 text-kejaksaan-darkGreen rounded border border-kejaksaan-gold/40">PTSP+</span>
+                        </div>
+                        <p class="text-[11px] font-medium text-slate-500 leading-tight">Kejaksaan Negeri Kepulauan Sula</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+                    <a href="#beranda" class="hover:text-kejaksaan-green transition-colors">Beranda</a>
+                    <a href="#layanan" class="hover:text-kejaksaan-green transition-colors">Layanan Utama</a>
+                    <a href="#lacak" class="hover:text-kejaksaan-green transition-colors flex items-center gap-1.5">
+                        Lacak Pengajuan
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    </a>
+                    <a href="#jadwal" class="hover:text-kejaksaan-green transition-colors">Jadwal Jemput Bola</a>
+                    <a href="#kontak" class="hover:text-kejaksaan-green transition-colors">Kontak & Info</a>
+                </nav>
+
+                <!-- Quick WhatsApp PTSP & Mobile Menu Button -->
+                <div class="flex items-center gap-2.5">
+                    <a href="https://wa.me/6285138793464?text=Halo%20Petugas%20PTSP%20Kejaksaan%20Negeri%20Kepulauan%20Sula%2C%20saya%20membutuhkan%20bantuan%20layanan%20LAYAR%20SULA." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold px-3.5 py-2.5 rounded-xl shadow-sm transition-all active:scale-95">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">Bantuan PTSP</span>
+                        <span class="sm:hidden">PTSP</span>
+                    </a>
+
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100" aria-label="Menu Navigasi">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-200 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+            <a href="#beranda" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green">Beranda</a>
+            <a href="#layanan" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green">Layanan Utama (6 Inovasi)</a>
+            <a href="#lacak" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green">Lacak Status Pengajuan</a>
+            <a href="#jadwal" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green">Jadwal Jemput Bola Kepulauan</a>
+            <a href="#kontak" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green">Kontak & Zona Integritas</a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION (DENGAN FOTO GEDUNG KEJARI KEPULAUAN SULA SEBAGAI BACKGROUND UTAMA) -->
+    <section id="beranda" class="hero-with-photo text-white relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32">
+        <!-- Fallback Background Image Element (hidden visually, ensures reliable loading & graceful fallback) -->
+        <img src="WhatsApp Image 2026-10-06 at 14.07.36.jpeg" 
+             alt="Gedung Kantor Kejaksaan Negeri Kepulauan Sula" 
+             onerror="this.parentElement.style.backgroundImage='linear-gradient(135deg, #073622 0%, #0B4F32 55%, #0A3656 100%)'"
+             class="hidden">
+
+        <!-- Subtle Decorative Maritime Lines -->
+        <div class="absolute inset-0 opacity-15 pointer-events-none">
+            <svg class="w-full h-full" viewBox="0 0 1440 600" fill="none">
+                <path d="M-100 450 C 250 350, 500 550, 850 420 C 1150 310, 1350 480, 1600 400" stroke="#D4AF37" stroke-width="2" stroke-dasharray="8 8"/>
+                <path d="M-100 500 C 300 400, 550 600, 900 470 C 1200 360, 1400 530, 1600 450" stroke="#38BDF8" stroke-width="2"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+                <!-- Left Column: Copy & CTAs -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/30 border border-kejaksaan-gold/50 backdrop-blur-md text-xs sm:text-sm font-medium text-kejaksaan-gold shadow-sm">
+                        <i data-lucide="compass" class="w-4 h-4"></i>
+                        <span>Inovasi Pelayanan Publik Kepulauan — Hai Sua!</span>
+                    </div>
+
+                    <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight drop-shadow-md">
+                        LAYAR SULA: <span class="text-kejaksaan-gold">Menjangkau Pulau,</span> Mempermudah Pelayanan Hukum Masyarakat.
+                    </h1>
+
+                    <p class="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl drop-shadow">
+                        Layanan Jarak Jauh & Terpadu <strong>Kejaksaan Negeri Kepulauan Sula</strong> (Jl. Jendral Besar Soeharto, Desa Waihama, Kec. Sanana). Menghadirkan akses pengantaran barang bukti gratis, e-tilang, konsultasi hukum daring, hingga izin besuk tanpa perlu menempuh perjalanan laut yang mahal dari <strong>Pulau Sulabesi</strong> maupun <strong>Pulau Mangoli</strong>.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3.5 pt-2">
+                        <a href="#layanan" class="inline-flex items-center justify-center gap-2 bg-kejaksaan-gold hover:bg-kejaksaan-goldHover text-kejaksaan-darkGreen font-bold px-6 py-3.5 rounded-xl shadow-lg shadow-black/30 transition-all hover:-translate-y-0.5">
+                            <span>Ajukan Layanan Sekarang</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#lacak" class="inline-flex items-center justify-center gap-2 bg-black/30 hover:bg-black/45 text-white border border-white/30 font-semibold px-6 py-3.5 rounded-xl backdrop-blur-md transition-all">
+                            <i data-lucide="search-check" class="w-5 h-5 text-kejaksaan-gold"></i>
+                            <span>Lacak Status Permohonan</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Stats Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t border-white/20">
+                        <div class="bg-black/25 backdrop-blur-md border border-white/15 rounded-xl p-3.5">
+                            <div class="font-display font-extrabold text-2xl text-kejaksaan-gold">12</div>
+                            <div class="text-xs text-slate-200 mt-0.5">Kecamatan Terjangkau</div>
+                        </div>
+                        <div class="bg-black/25 backdrop-blur-md border border-white/15 rounded-xl p-3.5">
+                            <div class="font-display font-extrabold text-2xl text-emerald-300">Rp 0</div>
+                            <div class="text-xs text-slate-200 mt-0.5">Biaya Layanan / Gratis</div>
+                        </div>
+                        <div class="bg-black/25 backdrop-blur-md border border-white/15 rounded-xl p-3.5">
+                            <div class="font-display font-extrabold text-2xl text-sky-300">24/7</div>
+                            <div class="text-xs text-slate-200 mt-0.5">Akses Pengaduan Online</div>
+                        </div>
+                        <div class="bg-black/25 backdrop-blur-md border border-white/15 rounded-xl p-3.5">
+                            <div class="font-display font-extrabold text-2xl text-white">&lt; 24 Jam</div>
+                            <div class="text-xs text-slate-200 mt-0.5">Respon Cepat PTSP</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Archipelago Coverage Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900/55 backdrop-blur-md border border-white/25 rounded-2xl p-6 shadow-2xl animate-float">
+                        <div class="flex items-center justify-between border-b border-white/15 pb-4 mb-4">
+                            <div>
+                                <span class="text-xs uppercase tracking-wider text-kejaksaan-gold font-bold">Jangkauan Maritim Sula</span>
+                                <h2 class="font-display font-bold text-lg text-white">Konektivitas Layanan Antar-Pulau</h2>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Aktif
+                            </span>
+                        </div>
+
+                        <!-- Stylized SVG Map Illustration of Sulabesi & Mangoli -->
+                        <div class="bg-kejaksaan-marine/90 rounded-xl p-4 border border-white/15 mb-4 relative overflow-hidden">
+                            <svg class="w-full h-44" viewBox="0 0 360 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Sea Grid Lines -->
+                                <line x1="0" y1="40" x2="360" y2="40" stroke="white" stroke-opacity="0.06"/>
+                                <line x1="0" y1="85" x2="360" y2="85" stroke="white" stroke-opacity="0.06"/>
+                                <line x1="0" y1="130" x2="360" y2="130" stroke="white" stroke-opacity="0.06"/>
+                                
+                                <!-- Pulau Mangoli (North - Horizontal Elongated) -->
+                                <path d="M55 42 C 95 28, 175 26, 245 34 C 285 38, 315 48, 305 60 C 280 68, 210 62, 145 64 C 95 66, 45 58, 55 42 Z" fill="#0B4F32" stroke="#D4AF37" stroke-width="1.5"/>
+                                <text x="155" y="49" fill="#FFFFFF" font-size="10" font-weight="bold" font-family="Plus Jakarta Sans">PULAU MANGOLI</text>
+                                <text x="145" y="59" fill="#CBD5E1" font-size="7.5">6 Kecamatan Terhubung</text>
+
+                                <!-- Pulau Sulabesi (South - Vertical Elongated) -->
+                                <path d="M168 86 C 184 84, 198 98, 196 124 C 194 148, 182 162, 168 158 C 156 154, 154 128, 158 104 C 160 92, 162 87, 168 86 Z" fill="#0B4F32" stroke="#D4AF37" stroke-width="1.5"/>
+                                <text x="206" y="122" fill="#FFFFFF" font-size="10" font-weight="bold" font-family="Plus Jakarta Sans">PULAU SULABESI</text>
+                                <text x="206" y="133" fill="#CBD5E1" font-size="7.5">6 Kecamatan Terhubung</text>
+
+                                <!-- Center Hub: Kejari Sanana -->
+                                <circle cx="186" cy="96" r="5" fill="#D4AF37"/>
+                                <circle cx="186" cy="96" r="9" stroke="#D4AF37" stroke-opacity="0.6" stroke-width="1.5"/>
+                                <text x="202" y="98" fill="#FDE047" font-size="8.5" font-weight="bold">POSKO UTAMA: SANANA</text>
+
+                                <!-- Sea Route Dashed Lines -->
+                                <path d="M186 96 Q 130 75 95 54" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <path d="M186 96 Q 235 76 268 54" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+                                <path d="M186 96 Q 175 125 173 148" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="3 3"/>
+
+                                <!-- Destination Nodes -->
+                                <circle cx="95" cy="54" r="3.5" fill="#38BDF8"/>
+                                <circle cx="268" cy="54" r="3.5" fill="#38BDF8"/>
+                                <circle cx="173" cy="148" r="3.5" fill="#38BDF8"/>
+                            </svg>
+                        </div>
+
+                        <div class="space-y-2.5 text-xs sm:text-sm">
+                            <div class="flex items-center justify-between bg-white/10 px-3.5 py-2.5 rounded-lg">
+                                <span class="text-slate-100 flex items-center gap-2">
+                                    <i data-lucide="ship" class="w-4 h-4 text-sky-300"></i>
+                                    Armada Kurir Laut & Darat
+                                </span>
+                                <span class="font-semibold text-white">Gratis Ongkir</span>
+                            </div>
+                            <div class="flex items-center justify-between bg-white/10 px-3.5 py-2.5 rounded-lg">
+                                <span class="text-slate-100 flex items-center gap-2">
+                                    <i data-lucide="video" class="w-4 h-4 text-kejaksaan-gold"></i>
+                                    Konsultasi Jaksa Virtual
+                                </span>
+                                <span class="font-semibold text-white">Senin – Jumat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo Caption Badge at bottom right -->
+            <div class="mt-8 flex justify-end">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-[11px] text-slate-200">
+                    <i data-lucide="building-2" class="w-3.5 h-3.5 text-kejaksaan-gold"></i>
+                    <span>Kantor Kejaksaan Negeri Kepulauan Sula — Sanana</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Wave Separator -->
+        <div class="absolute bottom-0 left-0 right-0 leading-none">
+            <svg class="w-full h-8 sm:h-12 text-slate-50" viewBox="0 0 1440 48" fill="currentColor" preserveAspectRatio="none">
+                <path d="M0 48H1440V18C1220 42 1040 0 720 22C400 44 210 6 0 26V48Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- 2. FITUR LAYANAN UNGGULAN LAYAR SULA -->
+    <section id="layanan" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="inline-block px-3 py-1 rounded-full bg-kejaksaan-lightGreen text-kejaksaan-green text-xs font-bold uppercase tracking-wider mb-3">
+                6 Layanan Terpadu Digital & Kepulauan
+            </span>
+            <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900">
+                Pilih Layanan Hukum Tanpa Perlu Menyeberang Laut
+            </h2>
+            <p class="text-slate-600 mt-3 text-sm sm:text-base">
+                Ajukan permohonan secara daring dari rumah atau kantor desa Anda. Petugas PTSP Kejaksaan Negeri Kepulauan Sula akan memproses dan mengantarkannya hingga ke kecamatan Anda.
+            </p>
+        </div>
+
+        <!-- 6 Service Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Service 1: Layar Antar BB -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-kejaksaan-green/40 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-kejaksaan-lightGreen text-kejaksaan-green flex items-center justify-center group-hover:bg-kejaksaan-green group-hover:text-white transition-colors">
+                            <i data-lucide="package-check" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                            Gratis Ongkir
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Antar Barang Bukti Gratis (Layar Antar BB)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Pengantaran barang bukti perkara pidana yang telah berkekuatan hukum tetap (<em>inkracht</em>) langsung ke alamat pemilik di seluruh kecamatan Pulau Sulabesi & Mangoli.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('Layar Antar BB - Antar Barang Bukti Gratis')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-green hover:bg-kejaksaan-darkGreen text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service 2: E-Tilang Sula -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-kejaksaan-marine/40 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 text-kejaksaan-marine flex items-center justify-center group-hover:bg-kejaksaan-marine group-hover:text-white transition-colors">
+                            <i data-lucide="file-badge" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-sky-50 text-kejaksaan-marine text-xs font-bold border border-sky-200">
+                            Cepat & Praktis
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Tilang Online & Delivery (E-Tilang Sula)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Cek besaran denda tilang, pembayaran via Virtual Account/transfer resmi, dan pengiriman berkas tilang (SIM/STNK) langsung ke rumah atau kantor kecamatan terdekat.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('E-Tilang Sula - Tilang Online & Delivery')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-marine hover:bg-kejaksaan-marineLight text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service 3: Halo JPN / Halo Jaksa Sula -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-kejaksaan-green/40 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center group-hover:bg-kejaksaan-gold group-hover:text-kejaksaan-darkGreen transition-colors">
+                            <i data-lucide="scale" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-bold border border-amber-200">
+                            Video Call / Chat
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Konsultasi Hukum Gratis (Halo JPN)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Pos Pelayanan Hukum gratis bagi masyarakat umum, nelayan, maupun perangkat desa terkait permasalahan Perdata, Tata Usaha Negara (TUN), serta pendampingan hukum.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('Halo JPN - Konsultasi Hukum Daring')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-green hover:bg-kejaksaan-darkGreen text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service 4: Sibeta / Izin Besuk Tahanan Online -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-kejaksaan-marine/40 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-kejaksaan-lightGreen text-kejaksaan-green flex items-center justify-center group-hover:bg-kejaksaan-green group-hover:text-white transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                            Tanpa Antre
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Izin Besuk Tahanan Online (Sibeta)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Pendaftaran surat izin besuk tahanan dari rumah sebelum Anda menyeberang menuju Sanana, sehingga jadwal kunjungan terjamin pasti dan bebas antrean.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('Sibeta - Izin Besuk Tahanan Online')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-marine hover:bg-kejaksaan-marineLight text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service 5: Lapor Sula -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-red-300 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center group-hover:bg-rose-700 group-hover:text-white transition-colors">
+                            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200">
+                            Identitas Rahasia
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Pengaduan & Whistleblowing (Lapor Sula)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Saluran pelaporan dugaan tindak pidana korupsi, penyalahgunaan dana desa, atau pungutan liar secara aman, terenkripsi, dan identitas pelapor dijamin rahasia.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('Lapor Sula - Pengaduan & Whistleblowing')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-green hover:bg-kejaksaan-darkGreen text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Service 6: Jaksa Menyapa & Jaga Desa -->
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-xl hover:border-kejaksaan-marine/40 transition-all flex flex-col justify-between group">
+                <div>
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 text-kejaksaan-marine flex items-center justify-center group-hover:bg-kejaksaan-marine group-hover:text-white transition-colors">
+                            <i data-lucide="ship" class="w-6 h-6"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full bg-sky-50 text-kejaksaan-marine text-xs font-bold border border-sky-200">
+                            Desa Pesisir
+                        </span>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Jaksa Menyapa & Jaga Desa Kepulauan</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Permintaan penyuluhan hukum keliling atau pendampingan tata kelola Dana Desa menggunakan armada laut dan darat langsung ke desa-desa pesisir Kepulauan Sula.
+                    </p>
+                </div>
+                <div class="pt-4 border-t border-slate-100">
+                    <button onclick="openServiceModal('Jaksa Menyapa & Jaga Desa Kepulauan')" class="w-full py-3 px-4 rounded-xl bg-kejaksaan-marine hover:bg-kejaksaan-marineLight text-white font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+                        <span>Gunakan Layanan</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. PELACAKAN STATUS LAYANAN (LACAK TIKET LAYAR SULA) -->
+    <section id="lacak" class="py-16 bg-kejaksaan-ocean border-y border-sky-100">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-6 sm:p-10">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-kejaksaan-marine bg-sky-50 px-3 py-1 rounded-full mb-2">
+                            <i data-lucide="radar" class="w-3.5 h-3.5"></i> Real-Time Tracking
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">Lacak Tiket LAYAR SULA</h2>
+                        <p class="text-slate-600 text-sm mt-1">Pantau posisi pengiriman barang bukti, berkas tilang, atau status permohonan Anda secara langsung.</p>
+                    </div>
+                </div>
+
+                <!-- Search Form -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <div class="relative flex-1">
+                        <i data-lucide="ticket" class="w-5 h-5 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="trackingInput" placeholder="Masukkan Nomor Resi (Contoh: LS-2026-0891)" 
+                               class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none font-mono text-sm uppercase">
+                    </div>
+                    <button onclick="trackTicket()" class="bg-kejaksaan-green hover:bg-kejaksaan-darkGreen text-white font-bold px-7 py-3.5 rounded-xl shadow-sm transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                        <span>Lacak Status</span>
+                    </button>
+                </div>
+
+                <!-- Quick Sample Ticket Buttons -->
+                <div class="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-500">
+                    <span>Coba nomor resi simulasi:</span>
+                    <button onclick="fillAndTrack('LS-2026-0891')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green font-mono font-semibold text-slate-700 transition-colors">
+                        LS-2026-0891 (Antar BB Mangoli)
+                    </button>
+                    <button onclick="fillAndTrack('LS-2026-0914')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-kejaksaan-lightGreen hover:text-kejaksaan-green font-mono font-semibold text-slate-700 transition-colors">
+                        LS-2026-0914 (E-Tilang Sulabesi)
+                    </button>
+                    <span id="recentUserTicketContainer" class="hidden">
+                        <button id="recentUserTicketBtn" onclick="" class="px-2.5 py-1 rounded-lg bg-kejaksaan-gold/20 border border-kejaksaan-gold text-kejaksaan-darkGreen font-mono font-bold transition-colors">
+                        </button>
+                    </span>
+                </div>
+
+                <!-- Tracking Result Display -->
+                <div id="trackingResult" class="mt-8 pt-6 border-t border-slate-200">
+                    <!-- Populated dynamically via JS on load & search -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. JADWAL PELAYANAN KELILING KEPULAUAN (JEMPUT BOLA) -->
+    <section id="jadwal" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+                <span class="inline-block px-3 py-1 rounded-full bg-kejaksaan-lightGreen text-kejaksaan-green text-xs font-bold uppercase tracking-wider mb-3">
+                    Agenda Armada Laut & Darat
+                </span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900">
+                    Jadwal Pelayanan Keliling (Jemput Bola)
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base max-w-2xl">
+                    Tim terpadu Kejaksaan Negeri Kepulauan Sula hadir langsung di kantor kecamatan dan balai desa untuk pelayanan hukum terpadu serta pengantaran barang bukti terjadwal.
+                </p>
+            </div>
+
+            <!-- Island Filter Tabs -->
+            <div class="inline-flex p-1.5 bg-slate-100 rounded-xl border border-slate-200 self-start">
+                <button onclick="filterSchedule('all')" id="tab-all" class="schedule-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-bold bg-kejaksaan-green text-white shadow-sm transition-all">
+                    Semua Pulau (12 Kec.)
+                </button>
+                <button onclick="filterSchedule('Sulabesi')" id="tab-Sulabesi" class="schedule-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                    Pulau Sulabesi
+                </button>
+                <button onclick="filterSchedule('Mangoli')" id="tab-Mangoli" class="schedule-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                    Pulau Mangoli
+                </button>
+            </div>
+        </div>
+
+        <!-- Schedule Cards Grid -->
+        <div id="scheduleGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Dynamically rendered by JavaScript -->
+        </div>
+    </section>
+
+    <!-- 5. ZONA INTEGRITAS & FOOTER -->
+    <footer id="kontak" class="bg-kejaksaan-darkGreen text-white pt-16 pb-10 border-t-4 border-kejaksaan-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Zona Integritas Banner -->
+            <div class="bg-gradient-to-r from-kejaksaan-green to-kejaksaan-marine rounded-2xl p-6 sm:p-8 border border-kejaksaan-gold/30 mb-14 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-xl">
+                <div class="flex items-start sm:items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-kejaksaan-gold/20 border border-kejaksaan-gold flex items-center justify-center shrink-0">
+                        <i data-lucide="award" class="w-8 h-8 text-kejaksaan-gold"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-kejaksaan-gold">Komitmen Reformasi Birokrasi</div>
+                        <h3 class="font-display font-bold text-xl sm:text-2xl text-white mt-0.5">Zona Integritas Menuju WBK & WBBM</h3>
+                        <p class="text-slate-200 text-sm mt-1">
+                            Seluruh layanan dalam inovasi <strong>LAYAR SULA</strong> bebas dari pungutan liar (Zero Pungli), transparan, dan akuntabel demi melayani masyarakat Kepulauan Sula.
+                        </p>
+                    </div>
+                </div>
+                <button onclick="openServiceModal('Lapor Sula - Pengaduan & Whistleblowing')" class="shrink-0 bg-kejaksaan-gold hover:bg-kejaksaan-goldHover text-kejaksaan-darkGreen font-bold px-5 py-3 rounded-xl text-sm transition-colors">
+                    Laporkan Pelanggaran
+                </button>
+            </div>
+
+            <!-- Main Footer Columns -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-kejaksaan-gold flex items-center justify-center text-kejaksaan-darkGreen font-extrabold font-display">
+                            LS
+                        </div>
+                        <div>
+                            <div class="font-display font-extrabold text-lg">LAYAR SULA</div>
+                            <div class="text-xs text-slate-300">Kejaksaan Negeri Kepulauan Sula</div>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed max-w-md">
+                        Layanan Jarak Jauh & Terpadu Kejaksaan Negeri Kepulauan Sula. Menjembatani jarak antar-pulau di Kabupaten Kepulauan Sula dengan pelayanan hukum yang humanis, cepat, dan tanpa biaya.
+                    </p>
+                    <div class="flex items-start gap-2.5 text-sm text-slate-200 pt-1">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-kejaksaan-gold shrink-0 mt-0.5"></i>
+                        <span>Jl. Jendral Besar Soeharto, Desa Waihama, Kec. Sanana, Kabupaten Kepulauan Sula, Provinsi Maluku Utara 97795</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-base text-kejaksaan-gold mb-4">Tautan Layanan</h4>
+                    <ul class="space-y-2.5 text-sm text-slate-300">
+                        <li><button onclick="openServiceModal('Layar Antar BB - Antar Barang Bukti Gratis')" class="hover:text-white transition-colors">Antar Barang Bukti Gratis</button></li>
+                        <li><button onclick="openServiceModal('E-Tilang Sula - Tilang Online & Delivery')" class="hover:text-white transition-colors">E-Tilang Sula Delivery</button></li>
+                        <li><button onclick="openServiceModal('Halo JPN - Konsultasi Hukum Daring')" class="hover:text-white transition-colors">Halo JPN (Konsultasi Hukum)</button></li>
+                        <li><button onclick="openServiceModal('Sibeta - Izin Besuk Tahanan Online')" class="hover:text-white transition-colors">Izin Besuk Tahanan Online</button></li>
+                        <li><a href="#lacak" class="hover:text-white transition-colors">Cek Status Pengajuan</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-display font-bold text-base text-kejaksaan-gold mb-4">Kontak & Jam Layanan</h4>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="phone-call" class="w-4 h-4 text-kejaksaan-gold"></i>
+                            <span>Hotline PTSP: (0929) 2221-XXX</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
+                            <a href="https://wa.me/6285138793464?text=Halo%20Petugas%20PTSP%20Kejaksaan%20Negeri%20Kepulauan%20Sula%2C%20saya%20ingin%20bertanya%20mengenai%20layanan%20LAYAR%20SULA." target="_blank" rel="noopener noreferrer" class="hover:text-emerald-300 transition-colors">WhatsApp: 0851-3879-3464</a>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="clock" class="w-4 h-4 text-sky-300"></i>
+                            <span>Senin – Jumat: 08.00 – 16.00 WIT</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="globe" class="w-4 h-4 text-kejaksaan-gold"></i>
+                            <span>kejari-kepsula.kejaksaan.go.id</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+                <p>&copy; 2026 Kejaksaan Negeri Kepulauan Sula — Inovasi Pelayanan Publik LAYAR SULA. Hak Cipta Dilindungi.</p>
+                <p class="text-slate-300 font-medium">Satya Adhi Wicaksana • Melayani Sepenuh Hati di Bumi Hai Sua</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE MODAL: FORMULIR PENGAJUAN LAYANAN LAYAR SULA              -->
+    <!-- ===================================================================== -->
+    <div id="serviceModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm transition-opacity" onclick="closeServiceModal()"></div>
+
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="relative bg-white rounded-3xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
+                
+                <!-- Modal Header -->
+                <div class="bg-gradient-to-r from-kejaksaan-green to-kejaksaan-marine px-6 py-5 text-white flex items-center justify-between">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-kejaksaan-gold">Formulir Digital LAYAR SULA</span>
+                        <h3 id="modalTitle" class="font-display font-bold text-lg sm:text-xl mt-0.5">Pengajuan Layanan</h3>
+                    </div>
+                    <button onclick="closeServiceModal()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors" aria-label="Tutup">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+
+                <!-- Form View -->
+                <form id="serviceForm" onsubmit="submitServiceForm(event)" class="p-6 space-y-4">
+                    <input type="hidden" id="selectedServiceInput" name="service">
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Nama Lengkap Sesuai KTP *</label>
+                            <input type="text" id="applicantName" required placeholder="Contoh: La Ode Muhammad" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Nomor WhatsApp Aktif *</label>
+                            <input type="tel" id="applicantPhone" required placeholder="Contoh: 081244xxxxxx" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Kecamatan Asal (12 Kec.) *</label>
+                            <select id="applicantDistrict" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none text-sm bg-white">
+                                <option value="" disabled selected>-- Pilih Kecamatan --</option>
+                                <optgroup label="Pulau Sulabesi">
+                                    <option value="Sanana (Pulau Sulabesi)">Sanana</option>
+                                    <option value="Sanana Utara (Pulau Sulabesi)">Sanana Utara</option>
+                                    <option value="Sulabesi Tengah (Pulau Sulabesi)">Sulabesi Tengah</option>
+                                    <option value="Sulabesi Barat (Pulau Sulabesi)">Sulabesi Barat</option>
+                                    <option value="Sulabesi Selatan (Pulau Sulabesi)">Sulabesi Selatan</option>
+                                    <option value="Sulabesi Timur (Pulau Sulabesi)">Sulabesi Timur</option>
+                                </optgroup>
+                                <optgroup label="Pulau Mangoli">
+                                    <option value="Mangoli Timur (Pulau Mangoli)">Mangoli Timur</option>
+                                    <option value="Mangoli Tengah (Pulau Mangoli)">Mangoli Tengah</option>
+                                    <option value="Mangoli Utara Timur (Pulau Mangoli)">Mangoli Utara Timur</option>
+                                    <option value="Mangoli Barat (Pulau Mangoli)">Mangoli Barat</option>
+                                    <option value="Mangoli Utara (Pulau Mangoli)">Mangoli Utara</option>
+                                    <option value="Mangoli Selatan (Pulau Mangoli)">Mangoli Selatan</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Desa / Dusun Tujuan *</label>
+                            <input type="text" id="applicantVillage" required placeholder="Nama Desa & Patokan Rumah" 
+                                   class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Keterangan / Nomor Perkara / Tilang *</label>
+                        <textarea id="applicantNotes" rows="3" required placeholder="Jelaskan kebutuhan Anda (misal: Nomor Putusan Pengadilan, Nomor Register Tilang, Nama Tahanan, atau Pokok Permasalahan Hukum)..." 
+                                  class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-kejaksaan-green focus:border-kejaksaan-green outline-none text-sm"></textarea>
+                    </div>
+
+                    <!-- Simulated File Upload -->
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Unggah Foto KTP / Dokumen Pendukung (Opsional)</label>
+                        <label for="docUpload" class="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-dashed border-slate-300 hover:border-kejaksaan-green bg-slate-50 cursor-pointer transition-colors">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="upload-cloud" class="w-5 h-5 text-kejaksaan-green"></i>
+                                <span id="fileNameLabel" class="text-xs sm:text-sm text-slate-600">Pilih foto KTP / Surat Putusan / Bukti Tilang...</span>
+                            </div>
+                            <span class="text-xs font-bold text-kejaksaan-marine bg-white px-2.5 py-1 rounded-lg border border-slate-200">Pilih File</span>
+                        </label>
+                        <input type="file" id="docUpload" class="hidden" onchange="updateFileName(this)">
+                    </div>
+
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-start gap-2.5 text-xs text-emerald-900">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5"></i>
+                        <span>Layanan ini <strong>100% GRATIS</strong>. Petugas PTSP Kejari Kepulauan Sula akan menghubungi nomor WhatsApp Anda untuk konfirmasi jadwal pengiriman/layanan.</span>
+                    </div>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                        <button type="button" onclick="closeServiceModal()" class="sm:w-1/3 py-3 px-4 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50">
+                            Batal
+                        </button>
+                        <button type="submit" class="sm:w-2/3 py-3 px-4 rounded-xl bg-kejaksaan-green hover:bg-kejaksaan-darkGreen text-white font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                            <span>Kirim Permohonan & Dapatkan Resi</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Success Ticket Generated View (Hidden initially) -->
+                <div id="ticketSuccessView" class="hidden p-6 sm:p-8 text-center space-y-5">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                        <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">Permohonan Berhasil Terdaftar</span>
+                        <h4 class="font-display font-extrabold text-2xl text-slate-900 mt-2">Nomor Resi LAYAR SULA Anda</h4>
+                        <p class="text-slate-600 text-sm mt-1">Simpan nomor resi di bawah ini untuk memantau status layanan secara real-time.</p>
+                    </div>
+
+                    <div class="bg-slate-900 text-white rounded-2xl p-5 border-2 border-kejaksaan-gold relative">
+                        <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Kode Tiket Layanan</div>
+                        <div id="generatedTicketCode" class="font-mono font-extrabold text-2xl sm:text-3xl text-kejaksaan-gold tracking-wider">LS-2026-XXXX</div>
+                        <div id="generatedTicketSummary" class="text-xs text-slate-300 mt-2"></div>
+                        <button onclick="copyTicketCode()" class="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span id="copyBtnText">Salin Nomor Resi</span>
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button onclick="trackNewlyCreatedTicket()" class="flex-1 py-3 px-4 rounded-xl bg-kejaksaan-marine hover:bg-kejaksaan-marineLight text-white font-bold text-sm flex items-center justify-center gap-2">
+                            <i data-lucide="radar" class="w-4 h-4"></i>
+                            <span>Lacak Tiket Sekarang</span>
+                        </button>
+                        <button onclick="closeServiceModal()" class="py-3 px-5 rounded-xl border border-slate-300 text-slate-700 font-semibold text-sm hover:bg-slate-50">
+                            Selesai
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE MODAL: BANTUAN CEPAT WHATSAPP PTSP                        -->
+    <!-- ===================================================================== -->
+    <div id="waQuickModal" class="fixed inset-0 z-50 hidden overflow-y-auto" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm" onclick="closeWaQuickModal()"></div>
+        <div class="flex min-h-full items-center justify-center p-4">
+            <div class="relative bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200 overflow-hidden">
+                <div class="bg-emerald-700 px-6 py-5 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-white/15 flex items-center justify-center">
+                            <i data-lucide="headset" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display font-bold text-base">Halo PTSP Kejari Sula</h3>
+                            <p class="text-xs text-emerald-100">Petugas Piket Online • Respon Cepat</p>
+                        </div>
+                    </div>
+                    <button onclick="closeWaQuickModal()" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <div class="p-6 space-y-4">
+                    <p class="text-sm text-slate-600">
+                        Butuh bantuan darurat terkait pengantaran barang bukti ke pulau, jadwal kapal pengiriman, atau konsultasi hukum segera? Pilih topik bantuan cepat:
+                    </p>
+                    <div class="space-y-2.5">
+                        <button onclick="simulateQuickChat('Tanya Jadwal Kapal Antar Barang Bukti ke Pulau Mangoli')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all flex items-center justify-between text-sm font-medium text-slate-800">
+                            <span>🚢 Jadwal Armada Antar BB ke Pulau Mangoli</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button onclick="simulateQuickChat('Cek Denda E-Tilang & Pengiriman SIM/STNK')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all flex items-center justify-between text-sm font-medium text-slate-800">
+                            <span>🪪 Cek Denda E-Tilang & Pengiriman Berkas</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button onclick="simulateQuickChat('Jadwalkan Video Call Konsultasi Hukum Desa')" class="w-full text-left p-3.5 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50/50 transition-all flex items-center justify-between text-sm font-medium text-slate-800">
+                            <span>⚖️ Jadwalkan Video Call Halo JPN</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                    </div>
+                    <div id="quickChatFeedback" class="hidden p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT APPLICATION LOGIC                                          -->
+    <!-- ===================================================================== -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Mock Database for Ticket Tracking
+        const ticketDatabase = {
+            'LS-2026-0891': {
+                code: 'LS-2026-0891',
+                service: 'Layar Antar BB - Antar Barang Bukti Gratis',
+                applicant: 'Bapak Ruslan Umasugi',
+                destination: 'Desa Falabisahaya, Kec. Mangoli Utara (Pulau Mangoli)',
+                itemDetail: '1 Unit Motor Honda Revo (Putusan Inkracht No. 42/Pid.B/2026/PN Snn)',
+                currentStep: 3, // 1 to 4
+                steps: [
+                    { title: 'Permohonan Diterima', time: '23 Nov 2026, 09:15 WIT', desc: 'Berkas permohonan pengantaran barang bukti masuk ke sistem LAYAR SULA.' },
+                    { title: 'Verifikasi Petugas PTSP Sanana', time: '23 Nov 2026, 11:30 WIT', desc: 'Dokumen putusan inkracht & KTP terverifikasi sah oleh Seksi PB3R Kejari Kepulauan Sula.' },
+                    { title: 'Dalam Pengiriman Armada Laut ke Pulau Mangoli', time: '25 Nov 2026, 07:45 WIT', desc: 'Barang bukti sedang dalam perjalanan menggunakan KM. Sula Express menuju Pelabuhan Falabisahaya.' },
+                    { title: 'Selesai & Diserahterimakan', time: 'Estimasi Tiba Hari Ini, 14:00 WIT', desc: 'Penyerahan langsung kepada pemilik disertai berita acara serah terima gratis.' }
+                ]
+            },
+            'LS-2026-0914': {
+                code: 'LS-2026-0914',
+                service: 'E-Tilang Sula - Tilang Online & Delivery',
+                applicant: 'Siti Rahma Soamole',
+                destination: 'Desa Waiboga, Kec. Sulabesi Tengah (Pulau Sulabesi)',
+                itemDetail: 'Pengembalian STNK & SIM C (Pembayaran VA Lunas)',
+                currentStep: 4,
+                steps: [
+                    { title: 'Permohonan Diterima', time: '21 Nov 2026, 10:05 WIT', desc: 'Bukti pembayaran denda tilang via Virtual Account diterima.' },
+                    { title: 'Verifikasi Petugas PTSP Sanana', time: '21 Nov 2026, 13:20 WIT', desc: 'Berkas STNK & SIM C disiapkan untuk pengiriman kurir darat.' },
+                    { title: 'Dalam Pengiriman Kurir Darat Sulabesi', time: '22 Nov 2026, 09:00 WIT', desc: 'Petugas pengantar menuju Kecamatan Sulabesi Tengah.' },
+                    { title: 'Selesai & Diserahterimakan', time: '22 Nov 2026, 11:40 WIT', desc: 'Dokumen telah diterima langsung oleh pemohon di Desa Waiboga.' }
+                ]
+            }
+        };
+
+        let lastCreatedTicketCode = null;
+
+        // 2. Schedule Data for "Jemput Bola Kepulauan"
+        const schedules = [
+            {
+                island: 'Mangoli',
+                district: 'Kec. Mangoli Timur & Mangoli Tengah',
+                location: 'Aula Kantor Camat Mangoli Timur (Waitina)',
+                date: 'Kamis, 26 November 2026',
+                time: '09.00 – 15.00 WIT',
+                services: ['Antar Barang Bukti', 'Jaga Desa', 'Konsultasi Hukum'],
+                transport: 'Armada Speedboat Kejari Sula'
+            },
+            {
+                island: 'Sulabesi',
+                district: 'Kec. Sulabesi Selatan & Sulabesi Timur',
+                location: 'Balai Desa Fuata, Kec. Sulabesi Selatan',
+                date: 'Senin, 30 November 2026',
+                time: '08.30 – 14.30 WIT',
+                services: ['E-Tilang Delivery', 'Halo JPN', 'Penyuluhan Hukum'],
+                transport: 'Mobil Layanan Keliling Darat'
+            },
+            {
+                island: 'Mangoli',
+                district: 'Kec. Mangoli Utara & Mangoli Barat',
+                location: 'Kantor Camat Mangoli Utara (Falabisahaya)',
+                date: 'Rabu, 02 Desember 2026',
+                time: '09.00 – 15.30 WIT',
+                services: ['Antar Barang Bukti', 'Pengaduan Masyarakat', 'Jaga Desa'],
+                transport: 'Kapal Penyeberangan Terjadwal'
+            },
+            {
+                island: 'Sulabesi',
+                district: 'Kec. Sulabesi Barat & Sulabesi Tengah',
+                location: 'Kantor Camat Sulabesi Barat (Kabau)',
+                date: 'Jumat, 04 Desember 2026',
+                time: '08.30 – 11.30 WIT',
+                services: ['Konsultasi Hukum Gratis', 'Sibeta Info', 'E-Tilang'],
+                transport: 'Mobil Layanan Keliling Darat'
+            },
+            {
+                island: 'Mangoli',
+                district: 'Kec. Mangoli Utara Timur & Mangoli Selatan',
+                location: 'Balai Pertemuan Desa Waisakai',
+                date: 'Selasa, 08 Desember 2026',
+                time: '09.00 – 15.00 WIT',
+                services: ['Jaksa Menyapa Pesisir', 'Antar Barang Bukti', 'Konsultasi'],
+                transport: 'Armada Speedboat Kejari Sula'
+            },
+            {
+                island: 'Sulabesi',
+                district: 'Kec. Sanana & Sanana Utara',
+                location: 'Posko PTSP Kejari Sula & Pasar Basanohi',
+                date: 'Setiap Hari Kerja (Senin – Jumat)',
+                time: '08.00 – 16.00 WIT',
+                services: ['Semua 6 Layanan Terpadu LAYAR SULA'],
+                transport: 'Posko Utama Sanana'
+            }
+        ];
+
+        // 3. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 4. Service Modal Logic
+        function openServiceModal(serviceName) {
+            document.getElementById('modalTitle').textContent = serviceName;
+            document.getElementById('selectedServiceInput').value = serviceName;
+            
+            // Reset views
+            document.getElementById('serviceForm').classList.remove('hidden');
+            document.getElementById('ticketSuccessView').classList.add('hidden');
+            document.getElementById('serviceForm').reset();
+            document.getElementById('fileNameLabel').textContent = 'Pilih foto KTP / Surat Putusan / Bukti Tilang...';
+
+            document.getElementById('serviceModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        function updateFileName(input) {
+            const label = document.getElementById('fileNameLabel');
+            if (input.files && input.files.length > 0) {
+                label.textContent = input.files[0].name;
+                label.classList.add('font-semibold', 'text-kejaksaan-green');
+            } else {
+                label.textContent = 'Pilih foto KTP / Surat Putusan / Bukti Tilang...';
+                label.classList.remove('font-semibold', 'text-kejaksaan-green');
+            }
+        }
+
+        function submitServiceForm(e) {
+            e.preventDefault();
+            
+            const service = document.getElementById('selectedServiceInput').value;
+            const name = document.getElementById('applicantName').value.trim();
+            const district = document.getElementById('applicantDistrict').value;
+            const village = document.getElementById('applicantVillage').value.trim();
+            const notes = document.getElementById('applicantNotes').value.trim();
+
+            // Generate random 4-digit ticket number
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const ticketCode = `LS-2026-${randomNum}`;
+            lastCreatedTicketCode = ticketCode;
+
+            // Format current time
+            const now = new Date();
+            const timeStr = now.toLocaleDateString('id-ID', { day: '2-digit', month: 'short', year: 'numeric' }) + ', ' + 
+                            now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + ' WIT';
+
+            // Save to local tracking database
+            ticketDatabase[ticketCode] = {
+                code: ticketCode,
+                service: service,
+                applicant: name,
+                destination: `${village}, Kec. ${district}`,
+                itemDetail: notes,
+                currentStep: 1,
+                steps: [
+                    { title: 'Permohonan Diterima Sistem', time: timeStr, desc: `Permohonan atas nama ${name} telah tercatat di sistem PTSP LAYAR SULA.` },
+                    { title: 'Verifikasi Petugas PTSP Sanana', time: 'Menunggu Verifikasi (< 24 Jam)', desc: 'Petugas Kejari Kepulauan Sula sedang memeriksa kelengkapan data Anda.' },
+                    { title: 'Proses Layanan / Pengiriman ke Pulau Tujuan', time: 'Terjadwal', desc: `Penjadwalan armada laut/darat menuju ${district}.` },
+                    { title: 'Selesai', time: '-', desc: 'Layanan selesai diterima oleh masyarakat.' }
+                ]
+            };
+
+            // Show Success View
+            document.getElementById('generatedTicketCode').textContent = ticketCode;
+            document.getElementById('generatedTicketSummary').textContent = `${service} • Tujuan: ${district}`;
+            document.getElementById('copyBtnText').textContent = 'Salin Nomor Resi';
+
+            document.getElementById('serviceForm').classList.add('hidden');
+            document.getElementById('ticketSuccessView').classList.remove('hidden');
+
+            // Update quick button in tracking section
+            const recentContainer = document.getElementById('recentUserTicketContainer');
+            const recentBtn = document.getElementById('recentUserTicketBtn');
+            recentContainer.classList.remove('hidden');
+            recentBtn.textContent = `${ticketCode} (Baru Dibuat)`;
+            recentBtn.setAttribute('onclick', `fillAndTrack('${ticketCode}')`);
+
+            lucide.createIcons();
+        }
+
+        function copyTicketCode() {
+            const code = document.getElementById('generatedTicketCode').textContent;
+            const tempInput = document.createElement('input');
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            document.getElementById('copyBtnText').textContent = 'Tersalin!';
+        }
+
+        function trackNewlyCreatedTicket() {
+            closeServiceModal();
+            if (lastCreatedTicketCode) {
+                fillAndTrack(lastCreatedTicketCode);
+                document.getElementById('lacak').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // 5. Tracking Logic
+        function fillAndTrack(code) {
+            document.getElementById('trackingInput').value = code;
+            trackTicket();
+        }
+
+        function trackTicket() {
+            const rawCode = document.getElementById('trackingInput').value.trim().toUpperCase();
+            const resultContainer = document.getElementById('trackingResult');
+
+            if (!rawCode) {
+                resultContainer.innerHTML = `
+                    <div class="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-800 text-sm flex items-center gap-2.5">
+                        <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+                        <span>Silakan masukkan nomor resi LAYAR SULA terlebih dahulu (contoh: <strong>LS-2026-0891</strong>).</span>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            const ticket = ticketDatabase[rawCode];
+
+            if (!ticket) {
+                resultContainer.innerHTML = `
+                    <div class="p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm flex items-start gap-3">
+                        <i data-lucide="search-x" class="w-6 h-6 shrink-0 text-rose-600"></i>
+                        <div>
+                            <div class="font-bold">Nomor Resi "${rawCode}" Tidak Ditemukan</div>
+                            <p class="mt-1 text-rose-700">Pastikan format kode tiket benar atau coba klik tombol contoh resi simulasi di atas.</p>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            // Build Timeline HTML
+            let stepsHtml = ticket.steps.map((step, index) => {
+                const stepNumber = index + 1;
+                const isCompleted = stepNumber < ticket.currentStep;
+                const isCurrent = stepNumber === ticket.currentStep;
+                
+                let badgeClass = 'bg-slate-200 text-slate-500';
+                let titleClass = 'text-slate-500';
+                let cardClass = 'border-slate-100 bg-slate-50/50';
+
+                if (isCompleted) {
+                    badgeClass = 'bg-kejaksaan-green text-white';
+                    titleClass = 'text-slate-900 font-bold';
+                    cardClass = 'border-emerald-200 bg-emerald-50/30';
+                } else if (isCurrent) {
+                    badgeClass = 'bg-kejaksaan-gold text-kejaksaan-darkGreen ring-4 ring-kejaksaan-gold/30 font-extrabold';
+                    titleClass = 'text-kejaksaan-marine font-extrabold';
+                    cardClass = 'border-kejaksaan-gold bg-amber-50/40 shadow-sm';
+                }
+
+                return `
+                    <div class="relative flex gap-4 pb-6 last:pb-0">
+                        ${index < ticket.steps.length - 1 ? `<div class="absolute left-4 top-8 bottom-0 w-0.5 ${isCompleted ? 'bg-kejaksaan-green' : 'bg-slate-200'}"></div>` : ''}
+                        <div class="w-8 h-8 rounded-full ${badgeClass} flex items-center justify-center text-xs font-bold shrink-0 z-10">
+                            ${isCompleted ? '✓' : stepNumber}
+                        </div>
+                        <div class="flex-1 rounded-xl border ${cardClass} p-3.5">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                <span class="text-sm ${titleClass}">${step.title}</span>
+                                <span class="text-xs font-mono text-slate-500">${step.time}</span>
+                            </div>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">${step.desc}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            resultContainer.innerHTML = `
+                <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200 mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+                        <div>
+                            <span class="text-xs font-bold text-kejaksaan-green uppercase">${ticket.service}</span>
+                            <h3 class="font-mono font-extrabold text-xl text-slate-900">${ticket.code}</h3>
+                        </div>
+                        <span class="self-start sm:self-center px-3 py-1 rounded-full bg-kejaksaan-marine text-white text-xs font-bold">
+                            Status: Tahap ${ticket.currentStep} dari 4
+                        </span>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-3 pt-4 text-xs">
+                        <div>
+                            <span class="text-slate-500 block">Nama Pemohon</span>
+                            <span class="font-bold text-slate-800">${ticket.applicant}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block">Tujuan Wilayah</span>
+                            <span class="font-bold text-slate-800">${ticket.destination}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block">Keterangan Layanan</span>
+                            <span class="font-bold text-slate-800">${ticket.itemDetail}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pl-1">
+                    ${stepsHtml}
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        // 6. Render & Filter Schedule Cards
+        function renderSchedules(filterIsland = 'all') {
+            const grid = document.getElementById('scheduleGrid');
+            const filtered = filterIsland === 'all' 
+                ? schedules 
+                : schedules.filter(s => s.island === filterIsland);
+
+            grid.innerHTML = filtered.map(item => {
+                const isMangoli = item.island === 'Mangoli';
+                const islandBadge = isMangoli 
+                    ? 'bg-sky-50 text-kejaksaan-marine border-sky-200' 
+                    : 'bg-emerald-50 text-kejaksaan-green border-emerald-200';
+
+                const serviceTags = item.services.map(srv => 
+                    `<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">${srv}</span>`
+                ).join('');
+
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${islandBadge}">
+                                    Pulau ${item.island}
+                                </span>
+                                <span class="text-xs font-semibold text-slate-500 flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-kejaksaan-gold"></i>
+                                    ${item.date}
+                                </span>
+                            </div>
+                            <h3 class="font-display font-bold text-base text-slate-900 mb-1">${item.district}</h3>
+                            <p class="text-xs text-slate-600 flex items-start gap-1.5 mb-3">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-kejaksaan-green shrink-0"></i>
+                                <span>${item.location} (${item.time})</span>
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${serviceTags}
+                            </div>
+                        </div>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 flex items-center gap-1.5 font-medium">
+                                <i data-lucide="${isMangoli ? 'ship' : 'truck'}" class="w-4 h-4 text-kejaksaan-marine"></i>
+                                ${item.transport}
+                            </span>
+                            <button onclick="openServiceModal('Jaksa Menyapa & Jaga Desa Kepulauan')" class="font-bold text-kejaksaan-green hover:underline">
+                                Daftar &rarr;
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        function filterSchedule(island) {
+            // Update active tab styling
+            document.querySelectorAll('.schedule-tab').forEach(btn => {
+                btn.classList.remove('bg-kejaksaan-green', 'text-white', 'shadow-sm');
+                btn.classList.add('text-slate-600');
+            });
+            const activeBtn = document.getElementById(`tab-${island}`);
+            activeBtn.classList.add('bg-kejaksaan-green', 'text-white', 'shadow-sm');
+            activeBtn.classList.remove('text-slate-600');
+
+            renderSchedules(island);
+        }
+
+        // 7. Quick WhatsApp PTSP Modal
+        function openWaQuickModal() {
+            document.getElementById('quickChatFeedback').classList.add('hidden');
+            document.getElementById('waQuickModal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeWaQuickModal() {
+            document.getElementById('waQuickModal').classList.add('hidden');
+        }
+
+        function simulateQuickChat(topic) {
+            const waNumber = '6285138793464';
+            const message = encodeURIComponent(`Halo Petugas PTSP Kejari Kepulauan Sula, saya membutuhkan bantuan terkait: ${topic}`);
+            const waUrl = `https://wa.me/${waNumber}?text=${message}`;
+            window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+            const feedback = document.getElementById('quickChatFeedback');
+            feedback.innerHTML = `
+                <div class="font-bold mb-1">✅ Mengalihkan ke WhatsApp PTSP (0851-3879-3464)</div>
+                <p>Jika jendela WhatsApp tidak terbuka otomatis, <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="underline font-bold text-emerald-700">klik di sini untuk chat langsung</a>.</p>
+            `;
+            feedback.classList.remove('hidden');
+        }
+
+        // Initialize Default View on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderSchedules('all');
+            // Pre-populate default tracking preview with LS-2026-0891
+            fillAndTrack('LS-2026-0891');
+        });
+    </script>
+</body>
+</html>
